@@ -13,3 +13,11 @@ exports.getHomePage = (req, res) => {
 exports.getProfile = (req, res) => {
   res.render("profile");
 };
+
+exports.getForgotPassForm = (req, res) => {
+  res.render("forgot_pass_form");
+};
+
+exports.getResetForm = (req, res) => {
+  res.render("reset_pass_form", { resetToken: req.url.split("/")[2] });
+};

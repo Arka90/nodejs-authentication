@@ -1,6 +1,11 @@
 <title>Sign in Page!</title>
 
 <link rel="stylesheet" href="/css/styles.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 
 <form action="/users/create-session" method="post" class="form_container">
   <div class="logo_container">
@@ -87,7 +92,7 @@
   <button title="Sign In" type="submit" class="sign-in_btn">
     <span>Sign In</span>
   </button>
-
+  <a href="/forgot_password">Forgot Password?</a>
   <div class="separator">
     <hr class="line" />
     <span>Or</span>
@@ -145,3 +150,30 @@
   </a>
   <p class="note">Terms of use &amp; Conditions</p>
 </form>
+
+<script>
+
+  <% if(flash.success && flash.success.length > 0) {%>
+
+    new Noty({
+    theme:'relax',
+    text: '<%= flash.success %>',
+    type:'success',
+    layout:'topRight',
+    timeout:1500
+    }).show();
+
+  <%}%>
+
+  <% if(flash.error && flash.error.length > 0) {%>
+
+    new Noty({
+    theme:'relax',
+    text: '<%= flash.error %>',
+    type:'error',
+    layout:'topRight',
+    timeout:1500
+    }).show();
+
+    <%}%>
+</script>

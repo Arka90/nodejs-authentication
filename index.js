@@ -10,6 +10,8 @@ const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
 const passportGoogle = require("./config/passport-google-oauth2-strategy");
 const MongoStore = require("connect-mongo");
+const flash = require("connect-flash");
+const customMware = require("./config/middleware");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 // To see requests in the console
@@ -34,6 +36,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(customMware.setFlash);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

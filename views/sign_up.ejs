@@ -1,6 +1,11 @@
-<title>Sign in Page!</title>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css"
+/>
 <link rel="stylesheet" href="/css/styles.css" />
+
+<title>Sign in Page!</title>
 
 <form action="/users/create" method="POST" class="form_container">
   <div class="logo_container">
@@ -215,3 +220,30 @@
   </a>
   <p class="note">Terms of use &amp; Conditions</p>
 </form>
+
+<script>
+
+  <% if(flash.success && flash.success.length > 0) {%>
+
+    new Noty({
+    theme:'relax',
+    text: '<%= flash.success %>',
+    type:'success',
+    layout:'topRight',
+    timeout:1500
+    }).show();
+
+  <%}%>
+
+  <% if(flash.error && flash.error.length > 0) {%>
+
+    new Noty({
+    theme:'relax',
+    text: '<%= flash.error %>',
+    type:'error',
+    layout:'topRight',
+    timeout:1500
+    }).show();
+
+    <%}%>
+</script>

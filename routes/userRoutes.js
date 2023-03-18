@@ -3,6 +3,7 @@ const router = express.Router();
 
 const passport = require("passport");
 const userController = require("../controllers/userController");
+const { route } = require("./viewRoutes");
 
 router.post(
   "/create-session",
@@ -21,5 +22,13 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/users/sign-in" }),
   userController.createSession
 );
+
+router.get("/sign_out", userController.destroy);
+
+router.post("/reset-password", userController.resetPass);
+
+router.post("/forgot_password", userController.forgotPass);
+
+router.post("/reset-forgot-password/:token", userController.resetPassword);
 
 module.exports = router;
