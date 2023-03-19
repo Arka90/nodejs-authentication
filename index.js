@@ -1,7 +1,8 @@
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
-
 const userRouter = require("./routes/userRoutes");
 const viewsRouter = require("./routes/viewRoutes");
 const session = require("express-session");
@@ -12,15 +13,18 @@ const passportGoogle = require("./config/passport-google-oauth2-strategy");
 const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
+const expressLayout = require("express-ejs-layouts");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 // To see requests in the console
-app.use(morgan("dev"));
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 app.use(
   session({
     name: "auth-system",
-    secret: "highlysecretvalue",
+    secret: process.env.SESSION_SECRET,
     saveUninitialized: "false",
     resave: "false",
     cookie: {
@@ -43,7 +47,7 @@ app.use(customMware.setFlash);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "assets")));
-
+app.use(expressLayout);
 app.use("/", viewsRouter);
 app.use("/users", userRouter);
 

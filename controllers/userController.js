@@ -4,11 +4,14 @@ const welcomeEmailWorker = require("../workers/welcome_email_worker");
 const signinMailer = require("../mailers/signin_mailer");
 const signinEmailWorker = require("../workers/signin_email_worker");
 const forgotPassMailer = require("../mailers/forgot_pass_mailer");
+const request = require("request");
 const crypto = require("crypto");
 const queue = require("../config/kue");
 
 module.exports.create = async function (req, res) {
   try {
+
+
     if (req.body.password != req.body.confirm_password) {
       req.flash("error", "Password Dose not match !");
       return res.redirect("back");

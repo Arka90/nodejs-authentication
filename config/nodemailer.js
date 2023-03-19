@@ -7,8 +7,8 @@ let trasporter = nodemailer.createTransport({
   port: 2525,
   secure: false,
   auth: {
-    user: "4a09a4577f3ef7",
-    pass: "8812ae3c079b53",
+    user: process.env.MAIL_ID,
+    pass: process.env.MAIL_PASSWORD,
   },
 });
 

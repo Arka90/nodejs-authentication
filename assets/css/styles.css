@@ -2,7 +2,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
+
+.home-container {
+  width: 18%;
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-container-link {
+  text-decoration: none;
+  font-size: 30px;
+  border: 3px solid #212121;
+  padding: 8px;
+  border-radius: 50px;
+  color: #212121;
+  transition: all 0.8s;
+}
+
+.home-container-link:hover {
+  background-color: #212121;
+  color: white;
+}
+
 .form_container {
   width: fit-content;
   height: fit-content;

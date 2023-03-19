@@ -1,10 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css"
-/>
-<link rel="stylesheet" href="css/styles.css" />
-
 <div>
   <section class="user_info">
     <h2>Hello <%= locals.user.name %></h2>
@@ -122,30 +115,3 @@
   </a>
   <%}%>
 </div>
-
-<script>
-
-  <% if(flash.success && flash.success.length > 0) {%>
-
-    new Noty({
-    theme:'relax',
-    text: '<%= flash.success %>',
-    type:'success',
-    layout:'topRight',
-    timeout:1500
-    }).show();
-
-  <%}%>
-
-  <% if(flash.error && flash.error.length > 0) {%>
-
-    new Noty({
-    theme:'relax',
-    text: '<%= flash.error %>',
-    type:'error',
-    layout:'topRight',
-    timeout:1500
-    }).show();
-
-    <%}%>
-</script>
