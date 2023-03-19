@@ -31,7 +31,7 @@ app.use(
       maxAge: 24 * 60 * 60 * 1000,
     },
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost:27017",
+      mongoUrl: process.env.MONGO_URL,
       autoRemove: "disabled",
     }),
   })

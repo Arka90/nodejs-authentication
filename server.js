@@ -1,5 +1,5 @@
 const app = require("./index");
-const port = 8000;
+const port = process.env.PORT;
 const db = require("./config/mongoose");
 
 const server = app.listen(port, () => {
